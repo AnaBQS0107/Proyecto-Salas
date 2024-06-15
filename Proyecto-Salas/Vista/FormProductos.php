@@ -1,17 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
-    
-    <!-- Style -->
     <link rel="stylesheet" href="../Css/style.css">
-
     <title>Registro de Productos -- Sistema de Ventas</title>
   </head>
   <body>
@@ -22,26 +16,34 @@
             <div class="mb-4">
               <center><h3>Formulario de Registro de Productos</h3></center>
             </div>
-            <form action="#" method="post">
+            <form action="guardar_producto.php" method="post">
               <div class="form-group">
                 <label for="productName">Nombre del Producto</label>
-                <input type="text" class="form-control" id="productName" required>
+                <input type="text" class="form-control" id="productName" name="productName" required>
               </div>
               <div class="form-group">
                 <label for="productDescription">Descripción del Producto</label>
-                <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+                <textarea class="form-control" id="productDescription" name="productDescription" rows="3"></textarea>
               </div>
               <div class="form-group">
-                <label for="costWithoutVAT">Costo sin IVA</label>
-                <input type="number" class="form-control" id="costWithoutVAT" required>
+                <label for="Precio">Precio</label>
+                <input type="number" class="form-control" id="precio" name="precio" required>
               </div>
               <div class="form-group">
-                <label for="costWithVAT">Costo con IVA</label>
-                <input type="number" class="form-control" id="costWithVAT" required>
+                <label for="cantidad">Cantidad en Stock</label>
+                <input type="number" class="form-control" id="cantidad" name="cantidad" required>
               </div>
               <div class="form-group">
-                <label for="location">Ubicación</label>
-                <input type="text" class="form-control" id="location" required>
+                <label for="fecha">Fecha de Ingreso</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+              </div>
+              <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <input type="text" class="form-control" id="categoria" name="categoria" required>
+              </div>
+              <div class="form-group">
+                <label for="tipoProducto">Tipo de Producto</label>
+                <input type="number" class="form-control" id="tipoProducto" name="tipoProducto" required>
               </div>
               <input type="submit" value="Registrar Producto" class="btn btn-block btn-primary">
             </form>
