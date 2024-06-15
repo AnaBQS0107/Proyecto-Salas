@@ -1,16 +1,16 @@
 <?php
-require_once '../Modelo/Login.php'; // Asegúrate de que la ruta a Login.php sea correcta
+require_once '../Modelo/Login.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['personaID']) && isset($_POST['password'])) {
+    if (!empty($_POST['personaID']) && !empty($_POST['password'])) {
         $personaID = $_POST['personaID'];
         $contraseña = $_POST['password'];
 
-        $Login = new UserModel(); // Asegúrate de que UserModel esté definido correctamente
+        $Login = new UserModel();
         $user = $Login->getUserByPersonaID($personaID);
 
         if ($user) {
-            if (password_verify($contraseña, $user['Contraseña'])) {
+            if ($contraseña === $user['Contraseña']) {
                 echo "Inicio de sesión exitoso";
             } else {
                 echo "Contraseña incorrecta";
@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $Login->close();
     } else {
+
         echo "Por favor complete todos los campos";
     }
 } else {
