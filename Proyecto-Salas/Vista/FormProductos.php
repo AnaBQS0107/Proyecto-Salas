@@ -16,34 +16,34 @@
             <div class="mb-4">
               <center><h3>Formulario de Registro de Productos</h3></center>
             </div>
-            <form action="guardar_producto.php" method="post">
+            <form action="../Controlador/FormProductos.php" method="post">
               <div class="form-group">
                 <label for="productName">Nombre del Producto</label>
-                <input type="text" class="form-control" id="productName" name="productName" required>
+                <input type="text" class="form-control" id="productName" name="Nombre" required>
               </div>
               <div class="form-group">
                 <label for="productDescription">Descripción del Producto</label>
-                <textarea class="form-control" id="productDescription" name="productDescription" rows="3"></textarea>
+                <textarea class="form-control" id="productDescription" name="Descripcion" rows="3"></textarea>
               </div>
               <div class="form-group">
-                <label for="Precio">Precio</label>
-                <input type="number" class="form-control" id="precio" name="precio" required>
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" id="precio" name="Precio" required>
               </div>
               <div class="form-group">
                 <label for="cantidad">Cantidad en Stock</label>
-                <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                <input type="number" class="form-control" id="cantidad" name="CantidadEnStock" required>
               </div>
               <div class="form-group">
                 <label for="fecha">Fecha de Ingreso</label>
-                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                <input type="date" class="form-control" id="fecha" name="FechaIngreso" required>
               </div>
               <div class="form-group">
                 <label for="categoria">Categoría</label>
-                <input type="text" class="form-control" id="categoria" name="categoria" required>
+                <input type="text" class="form-control" id="categoria" name="CategoriaID" required>
               </div>
               <div class="form-group">
                 <label for="tipoProducto">Tipo de Producto</label>
-                <input type="number" class="form-control" id="tipoProducto" name="tipoProducto" required>
+                <input type="number" class="form-control" id="tipoProducto" name="TipoProductoID" required>
               </div>
               <input type="submit" value="Registrar Producto" class="btn btn-block btn-primary">
             </form>
@@ -51,7 +51,6 @@
         </div>
       </div>
     </div>
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
