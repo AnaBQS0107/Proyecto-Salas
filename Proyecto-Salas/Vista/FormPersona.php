@@ -13,7 +13,11 @@
         <center>
             <h2>Formulario de Persona</h2>
         </center>
-        <form action="procesar.php" method="POST">
+        <form action="../Modelo/RegistroPersona.php" method="POST">
+            <div class="form-group">
+                <label for="personaID">Cédula:</label>
+                <input type="text" id="personaID" name="personaID" required>
+            </div>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
