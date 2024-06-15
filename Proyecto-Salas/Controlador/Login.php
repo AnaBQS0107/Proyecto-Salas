@@ -1,28 +1,29 @@
 <?php
-require_once '../Config/config.php';
+require_once '../Modelo/Login.php'; // Asegúrate de que la ruta a Login.php sea correcta
 
-class UserModel {
-    private $conn;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['personaID']) && isset($_POST['password'])) {
+        $personaID = $_POST['personaID'];
+        $contraseña = $_POST['password'];
 
-    public function __construct() {
-        try {
-            $this->conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conn->exec("set names utf8mb4");
-        } catch (PDOException $exception) {
-            echo "Error de conexión: " . $exception->getMessage();
+        $Login = new UserModel(); // Asegúrate de que UserModel esté definido correctamente
+        $user = $Login->getUserByPersonaID($personaID);
+
+        if ($user) {
+            if (password_verify($contraseña, $user['Contraseña'])) {
+                echo "Inicio de sesión exitoso";
+            } else {
+                echo "Contraseña incorrecta";
+            }
+        } else {
+            echo "ID de Persona no encontrado";
         }
-    }
 
-    public function getUserByPersonaID($personaID) {
-        $stmt = $this->conn->prepare("SELECT * FROM Usuario WHERE PersonaID = :personaID");
-        $stmt->bindParam(':personaID', $personaID, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $Login->close();
+    } else {
+        echo "Por favor complete todos los campos";
     }
-
-    public function close() {
-        $this->conn = null;
-    }
+} else {
+    echo "Método de solicitud no permitido";
 }
 ?>
