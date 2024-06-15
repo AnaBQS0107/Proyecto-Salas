@@ -9,10 +9,7 @@
 
     <link rel="stylesheet" href="../Css/owl.carousel.min.css">
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
-    
-    <!-- Style -->
     <link rel="stylesheet" href="../Css/style.css">
 
     <title>Login -- Sistema de Ventas</title>
