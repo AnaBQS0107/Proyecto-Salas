@@ -32,6 +32,7 @@ class ProductoModelo {
         }
     }
 
+
     public function close() {
         $this->conn = null;
     }
