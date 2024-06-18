@@ -34,8 +34,12 @@
                                     <textarea class="form-control" id="productDescription" name="Descripcion" rows="3"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="precio">Precio</label>
-                                    <input type="number" class="form-control" id="precio" name="Precio" required>
+                                    <label for="precio">Precio sin IVA</label>
+                                    <input type="number" class="form-control" id="precio" name="Precio_sin_IVA" required oninput="calcularIVA()">
+                                </div>
+                                <div class="form-group">
+                                    <label for="precioConIVA">Precio con IVA</label>
+                                    <input type="number" class="form-control" id="precioConIVA" name="Precio_con_IVA" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="cantidad">Cantidad en Stock</label>
@@ -50,24 +54,30 @@
                                     <select id="CategoriaID" name="CategoriaID" required>
                                         <option value="">Seleccione...</option>
                                         <?php
-                                            $host = "localhost:3307";  
-                                            $db_name = "sales_system"; 
-                                            $username = "root";       
-                                            $password = "";            
-                                            $conn = new mysqli($host, $username, $password, $db_name);
-                                            if ($conn->connect_error) {
-                                                die("Conexión fallida: " . $conn->connect_error);
-                                            }
+                                        // Establecer conexión a la base de datos
+                                        $host = "localhost:3307";
+                                        $db_name = "sales_system";
+                                        $username = "root";
+                                        $password = "";
+
+                                        try {
+                                            $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
                                             $sql = "SELECT CategoriaID, Nombre FROM Categoria ORDER BY CategoriaID ASC";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    echo "<option value='" . $row['CategoriaID'] . "'>" . $row['Nombre'] . "</option>";
-                                                }
-                                            } else {
-                                                echo "<option value=''>No hay categorías disponibles</option>";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->execute();
+
+                                            $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                            foreach ($categorias as $categoria) {
+                                                echo "<option value='" . $categoria['CategoriaID'] . "'>" . $categoria['Nombre'] . "</option>";
                                             }
-                                            $conn->close();
+                                        } catch (PDOException $e) {
+                                            echo "Error al conectar a la base de datos: " . $e->getMessage();
+                                        }
+
+                                        $conn = null; // Cerrar conexión
                                         ?>
                                     </select>
                                 </div>
@@ -76,30 +86,27 @@
                                     <select id="TipoProductoID" name="TipoProductoID" required>
                                         <option value="">Seleccione...</option>
                                         <?php
-                                            $host = "localhost:3307";  
-                                            $db_name = "sales_system"; 
-                                            $username = "root";       
-                                            $password = "";            
-                                            $conn = new mysqli($host, $username, $password, $db_name);
-                                            if ($conn->connect_error) {
-                                                die("Conexión fallida: " . $conn->connect_error);
-                                            }
+                                        // Establecer nueva conexión a la base de datos
+                                        try {
+                                            $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
                                             $sql = "SELECT TipoProductoID, Nombre FROM tipo_producto ORDER BY TipoProductoID ASC";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    echo "<option value='" . $row['TipoProductoID'] . "'>" . $row['Nombre'] . "</option>";
-                                                }
-                                            } else {
-                                                echo "<option value=''>No hay tipos de producto disponibles</option>";
+                                            $stmt = $conn->prepare($sql);
+                                            $stmt->execute();
+
+                                            $tipos_productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                            foreach ($tipos_productos as $tipo_producto) {
+                                                echo "<option value='" . $tipo_producto['TipoProductoID'] . "'>" . $tipo_producto['Nombre'] . "</option>";
                                             }
-                                            $conn->close();
+                                        } catch (PDOException $e) {
+                                            echo "Error al conectar a la base de datos: " . $e->getMessage();
+                                        }
+
+                                        $conn = null; // Cerrar conexión
                                         ?>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="ubiccion">Ubicacion</label>
-                                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
                                 </div>
                                 <input type="submit" value="Registrar Producto" class="btn btn-block btn-primary">
                             </form>
@@ -109,6 +116,13 @@
             </div>
         </div>
     </div>
+    <script>
+        function calcularIVA() {
+            var precioSinIVA = document.getElementById('precio').value;
+            var precioConIVA = precioSinIVA * 1.13; // Calculando el precio con IVA (asumiendo IVA del 13%)
+            document.getElementById('precioConIVA').value = precioConIVA.toFixed(2); // Mostrar precio con IVA con dos decimales
+        }
+    </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
