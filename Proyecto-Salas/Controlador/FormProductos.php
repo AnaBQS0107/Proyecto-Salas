@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error al registrar el producto: " . $e->getMessage();
         }
 
-        // Cerrar conexión (si aplica)
+      
         $productoModelo->close();
 
     } else {

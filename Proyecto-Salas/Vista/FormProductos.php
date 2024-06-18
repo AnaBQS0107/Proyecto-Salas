@@ -54,7 +54,7 @@
                                     <select id="CategoriaID" name="CategoriaID" required>
                                         <option value="">Seleccione...</option>
                                         <?php
-                                        // Establecer conexión a la base de datos
+                                      
                                         $host = "localhost:3307";
                                         $db_name = "sales_system";
                                         $username = "root";
@@ -77,7 +77,7 @@
                                             echo "Error al conectar a la base de datos: " . $e->getMessage();
                                         }
 
-                                        $conn = null; // Cerrar conexión
+                                        $conn = null; 
                                         ?>
                                     </select>
                                 </div>
@@ -86,7 +86,7 @@
                                     <select id="TipoProductoID" name="TipoProductoID" required>
                                         <option value="">Seleccione...</option>
                                         <?php
-                                        // Establecer nueva conexión a la base de datos
+                                    
                                         try {
                                             $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
                                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -104,7 +104,7 @@
                                             echo "Error al conectar a la base de datos: " . $e->getMessage();
                                         }
 
-                                        $conn = null; // Cerrar conexión
+                                        $conn = null;
                                         ?>
                                     </select>
                                 </div>
@@ -119,8 +119,8 @@
     <script>
         function calcularIVA() {
             var precioSinIVA = document.getElementById('precio').value;
-            var precioConIVA = precioSinIVA * 1.13; // Calculando el precio con IVA (asumiendo IVA del 13%)
-            document.getElementById('precioConIVA').value = precioConIVA.toFixed(2); // Mostrar precio con IVA con dos decimales
+            var precioConIVA = precioSinIVA * 1.13;
+            document.getElementById('precioConIVA').value = precioConIVA.toFixed(2); 
         }
     </script>
     <script src="js/jquery-3.3.1.min.js"></script>
