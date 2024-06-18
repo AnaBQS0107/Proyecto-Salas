@@ -1,6 +1,6 @@
 body {
-    background: rgb(238, 174, 202); /* Fondo degradado de ejemplo */
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(132, 132, 224, 1) 100%);
+    background: rgb(129,143,155);
+    background: linear-gradient(0deg, rgba(129,143,155,1) 0%, rgba(108,99,255,0.364670868347339) 72%);
     margin: 0; /* Asegura que no haya margen alrededor del cuerpo */
     padding: 0; /* Asegura que no haya relleno alrededor del cuerpo */
 }
@@ -58,7 +58,7 @@ margin-right: 5px;
 margin-right: 0;
 }
 .form-group .submit-btn {
-background-color: #6e407c;
+background-color: #6c63ff;
 color: white;
 padding: 10px 20px;
 border: none;
@@ -69,5 +69,5 @@ display: block; /* Cambiado de inline-block a block */
 margin: 0 auto; /* Centrar horizontalmente */
 }
 .form-group .submit-btn:hover {
-background-color: #8c4a9d;
+background-color: #847dff;
 }

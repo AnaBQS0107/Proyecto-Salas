@@ -15,10 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $categoria = $_POST['CategoriaID'];
         $tipoProducto = $_POST['TipoProductoID'];
 
-    
         $productoModelo = new ProductoModelo();
 
-   
         try {
             $productoModelo->guardarProducto($nombre, $descripcion, $precio, $cantidad, $fecha, $categoria, $tipoProducto);
             echo "Producto registrado exitosamente";
@@ -26,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error al registrar el producto: " . $e->getMessage();
         }
 
-     
         $productoModelo->close();
 
     } else {

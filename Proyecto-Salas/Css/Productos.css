@@ -2,9 +2,21 @@
 body {
     font-family: Arial, sans-serif;
     font-weight: bold;
-   background: rgb(238, 200, 216); 
-    background: radial-gradient(circle, rgb(241, 206, 221) 0%, rgb(189, 189, 253) 100%);
+    background: rgb(129,143,155);
+    background: linear-gradient(0deg, rgba(129,143,155,1) 0%, rgba(108,99,255,0.364670868347339) 72%);
 }
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    .form-group select {
+    height: 38px; /* Ajuste para que el tamaño sea uniforme con los inputs */
+    }
 
 
 .title-form {
