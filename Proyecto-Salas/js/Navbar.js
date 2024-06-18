@@ -1,12 +1,14 @@
+// Navbar.js
+document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('close-btn');
 
+    menuIcon.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+    });
 
-document.getElementById('menu-icon').addEventListener('click', function() {
-    var sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('show');
-});
-
-var closeBtn = document.querySelector('.close-btn');
-closeBtn.addEventListener('click', function() {
-    var sidebar = document.getElementById('sidebar');
-    sidebar.classList.remove('show');
+    closeBtn.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+    });
 });

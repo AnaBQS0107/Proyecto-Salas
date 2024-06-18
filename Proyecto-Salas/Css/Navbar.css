@@ -2,14 +2,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    border: black;
 }
 
 header {
-    background:#818f9b;
+    background: #818f9b;
     padding: 20px 0;
-
-   
 }
 
 nav {
@@ -17,7 +14,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    
 }
 
 .menu-icon {
@@ -70,6 +66,7 @@ nav {
 .menu a:hover {
     text-decoration: underline;
 }
+
 .close-btn {
     position: absolute;
     top: 10px;
@@ -77,4 +74,16 @@ nav {
     font-size: 24px;
     color: #fff;
     cursor: pointer;
+}
+
+.logo img {
+    max-width: 80px; /* Tamaño máximo del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+    display: block; /* Asegura que el logo se muestre como bloque */
+}
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Alinea el logo a la derecha */
+    margin-right: auto; /* Alinea el logo a la izquierda */
 }
