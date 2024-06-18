@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $personaID = $_POST['personaID']; // Capturar la cédula desde el formulario
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
+    $Contrasena = $_POST['Contrasena'];
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
     $genero = $_POST['genero'];
     $estado_civil = $_POST['estado_civil'];
@@ -25,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar la consulta SQL para insertar en la tabla persona
-    $sql = "INSERT INTO persona (PersonaID, Nombre, Apellido, FechaNacimiento, GeneroID, EstadoCivilID, EstadoPersonaID)
-            VALUES ('$personaID', '$nombre', '$apellido', '$fecha_nacimiento', '$genero', '$estado_civil', '$estado_persona')";
+    $sql = "INSERT INTO persona (PersonaID, Nombre, Apellido, Contrasena, FechaNacimiento, GeneroID, EstadoCivilID, EstadoPersonaID)
+            VALUES ('$personaID', '$nombre', '$apellido', '$Contrasena', '$fecha_nacimiento', '$genero', '$estado_civil', '$estado_persona')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {

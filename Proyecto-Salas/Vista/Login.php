@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<?php include 'Navbar.php'; ?>
+    <?php include 'Navbar.php'; ?>
     <div class="content">
         <div class="container">
             <div class="row">
@@ -38,6 +38,8 @@
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                                 <input type="submit" value="Iniciar Sesión" class="btn btn-block btn-primary">
+                                <br>
+                                <center><a href="../Vista/FormPersona.php">¿No tienes cuenta? Crea una</a></center>
                             </form>
                         </div>
                     </div>

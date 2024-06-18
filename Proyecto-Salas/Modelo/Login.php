@@ -15,7 +15,7 @@ class UserModel {
     }
 
     public function getUserByPersonaID($personaID) {
-        $stmt = $this->conn->prepare("SELECT * FROM Usuario WHERE PersonaID = :personaID");
+        $stmt = $this->conn->prepare("SELECT * FROM persona WHERE PersonaID = :personaID");
         $stmt->bindParam(':personaID', $personaID, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
