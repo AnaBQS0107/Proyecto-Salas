@@ -28,10 +28,6 @@
                 <input type="text" id="apellido" name="apellido" required>
             </div>
             <div class="form-group">
-                <label for="Contrasena">Contraseña:</label>
-                <input type="password" id="Contrasena" name="Contrasena" required>
-            </div>
-            <div class="form-group">
                 <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
                 <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
             </div>
