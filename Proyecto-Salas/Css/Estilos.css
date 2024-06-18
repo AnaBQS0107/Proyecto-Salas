@@ -1,8 +1,8 @@
 body {
-    background: rgb(129,143,155);
+    background: rgb(118, 131, 143);
     background: linear-gradient(0deg, rgba(129,143,155,1) 0%, rgba(108,99,255,0.364670868347339) 72%);
-    margin: 0; /* Asegura que no haya margen alrededor del cuerpo */
-    padding: 0; /* Asegura que no haya relleno alrededor del cuerpo */
+    margin: 0;
+    padding: 0; 
 }
 
 /* Estilo para el contenedor del formulario */
