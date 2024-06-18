@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="Telefono">Telefono:</label>
-                <input id="Telefono" name="Telefono" required>
+                <input type="text" name="Telefono" required>
             </div>
             <div class="form-group">
                 <label for="TipoUsuarioID">Tipo de usuario:</label>

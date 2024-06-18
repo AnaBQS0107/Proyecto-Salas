@@ -19,36 +19,49 @@
                 <div class="col-md-8">
                     <div class="card custom-form-width">
                         <div class="card-body">
-                            <form action="../Controlador/FormProductos.php" method="post">
+                        <form action="../Controlador/FormProductos.php" method="post" enctype="multipart/form-data">
                                 <div class="mb-4">
                                     <center>
                                         <h4 class="title-form">Registro de Productos</h4>
                                     </center>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="productName">Nombre del Producto</label>
                                     <input type="text" class="form-control" id="productName" name="Nombre" required>
                                 </div>
+                                <br>
+
                                 <div class="form-group">
                                     <label for="productDescription">Descripción del Producto</label>
-                                    <textarea class="form-control" id="productDescription" name="Descripcion" rows="3"></textarea>
+                                    <textarea class="form-control" id="productDescription" name="Descripcion"
+                                        rows="3"></textarea>
                                 </div>
+                                <br>
+
                                 <div class="form-group">
                                     <label for="precio">Precio sin IVA</label>
-                                    <input type="number" class="form-control" id="precio" name="Precio_sin_IVA" required oninput="calcularIVA()">
+                                    <input type="number" class="form-control" id="precio" name="Precio" required
+                                        oninput="calcularIVA()">
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="precioConIVA">Precio con IVA</label>
-                                    <input type="number" class="form-control" id="precioConIVA" name="Precio_con_IVA" readonly>
+                                    <input type="number" class="form-control" id="precioConIVA" name="Precio_con_IVA"
+                                        readonly>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="cantidad">Cantidad en Stock</label>
-                                    <input type="number" class="form-control" id="cantidad" name="CantidadEnStock" required>
+                                    <input type="number" class="form-control" id="cantidad" name="CantidadEnStock"
+                                        required>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="fecha">Fecha de Ingreso</label>
                                     <input type="date" class="form-control" id="fecha" name="FechaIngreso" required>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="CategoriaID">Categoría:</label>
                                     <select id="CategoriaID" name="CategoriaID" required>
@@ -81,6 +94,7 @@
                                         ?>
                                     </select>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="TipoProductoID">Tipo de producto:</label>
                                     <select id="TipoProductoID" name="TipoProductoID" required>
@@ -107,8 +121,18 @@
                                         $conn = null;
                                         ?>
                                     </select>
+                                    <br><br>
+                                    <div class="form-group">
+                                        <label for="productImage">Imagen del Producto</label>
+                                      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
+
+                                    </div>
+                                    <br><br>
                                 </div>
-                                <input type="submit" value="Registrar Producto" class="btn btn-block btn-primary">
+
+                                <center> <input type="submit" value="Registrar Producto"
+                                        class="btn btn-block btn-primary"></center>
+
                             </form>
                         </div>
                     </div>
@@ -117,11 +141,11 @@
         </div>
     </div>
     <script>
-        function calcularIVA() {
-            var precioSinIVA = document.getElementById('precio').value;
-            var precioConIVA = precioSinIVA * 1.13;
-            document.getElementById('precioConIVA').value = precioConIVA.toFixed(2); 
-        }
+    function calcularIVA() {
+        var precioSinIVA = document.getElementById('precio').value;
+        var precioConIVA = precioSinIVA * 1.13;
+        document.getElementById('precioConIVA').value = precioConIVA.toFixed(2);
+    }
     </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
