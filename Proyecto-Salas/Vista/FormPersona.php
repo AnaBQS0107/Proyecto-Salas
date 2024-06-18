@@ -9,8 +9,9 @@
 </head>
 
 <body>
-<?php include 'Navbar.php'; ?>
-    <div class="form-container">
+<?php include 'Navbar.php'; ?>  
+<div class="form-container">
+        
         <center>
             <h2>Formulario Inicial</h2>
         </center>

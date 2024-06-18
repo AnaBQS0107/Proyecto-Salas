@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PH.SA</title>
-  <link rel="stylesheet" href="../Css/styles.css">
+ 
   <link rel="stylesheet" href="../Css/inicio.css">
 </head>
 <body>
