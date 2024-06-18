@@ -13,11 +13,10 @@ class ProductoModelo {
             echo "Error de conexión: " . $exception->getMessage();
         }
     }
-
-    public function guardarProducto($nombre, $descripcion, $precio, $cantidad, $fecha, $categoriaID, $tipoProductoID) {
+    public function guardarProducto($nombre, $descripcion, $precio, $cantidad, $fecha, $categoriaID, $tipoProductoID, $ubicacion) {
         try {
-            $sql = "INSERT INTO producto (Nombre, Descripcion, Precio, CantidadEnStock, FechaIngreso, CategoriaID, TipoProductoID)
-                    VALUES (:nombre, :descripcion, :precio, :cantidad, :fecha, :categoriaID, :tipoProductoID)";
+            $sql = "INSERT INTO producto (Nombre, Descripcion, Precio, CantidadEnStock, FechaIngreso, CategoriaID, TipoProductoID, Ubicacion)
+                    VALUES (:nombre, :descripcion, :precio, :cantidad, :fecha, :categoriaID, :tipoProductoID, :ubicacion)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
@@ -26,6 +25,7 @@ class ProductoModelo {
             $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR);
             $stmt->bindParam(':categoriaID', $categoriaID, PDO::PARAM_STR); 
             $stmt->bindParam(':tipoProductoID', $tipoProductoID, PDO::PARAM_INT); 
+            $stmt->bindParam(':ubicacion', $ubicacion, PDO::PARAM_STR); 
             $stmt->execute();
         } catch (PDOException $exception) {
             echo "Error al guardar el producto: " . $exception->getMessage();

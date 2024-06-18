@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['Nombre']) && !empty($_POST['Descripcion']) && 
         !empty($_POST['Precio']) && !empty($_POST['CantidadEnStock']) && 
         !empty($_POST['FechaIngreso']) && !empty($_POST['CategoriaID']) && 
-        !empty($_POST['TipoProductoID'])) {
+        !empty($_POST['TipoProductoID']) && !empty($_POST['ubicacion'])) {
         
         $nombre = $_POST['Nombre'];
         $descripcion = $_POST['Descripcion'];
@@ -14,11 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fecha = $_POST['FechaIngreso'];
         $categoria = $_POST['CategoriaID'];
         $tipoProducto = $_POST['TipoProductoID'];
+        $ubicacion = $_POST['ubicacion']; 
 
         $productoModelo = new ProductoModelo();
 
         try {
-            $productoModelo->guardarProducto($nombre, $descripcion, $precio, $cantidad, $fecha, $categoria, $tipoProducto);
+            $productoModelo->guardarProducto($nombre, $descripcion, $precio, $cantidad, $fecha, $categoria, $tipoProducto, $ubicacion);
             echo "Producto registrado exitosamente";
         } catch (Exception $e) {
             echo "Error al registrar el producto: " . $e->getMessage();

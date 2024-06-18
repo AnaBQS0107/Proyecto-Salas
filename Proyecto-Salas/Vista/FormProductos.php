@@ -97,6 +97,10 @@
                                         ?>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="ubiccion">Ubicacion</label>
+                                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+                                </div>
                                 <input type="submit" value="Registrar Producto" class="btn btn-block btn-primary">
                             </form>
                         </div>
