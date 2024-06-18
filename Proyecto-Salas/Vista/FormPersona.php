@@ -12,7 +12,7 @@
 <?php include 'Navbar.php'; ?>
     <div class="form-container">
         <center>
-            <h2>Formulario de Persona</h2>
+            <h2>Formulario Inicial</h2>
         </center>
         <form action="../Modelo/RegistroPersona.php" method="POST">
             <div class="form-group">
