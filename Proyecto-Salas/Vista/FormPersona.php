@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<?php include 'Navbar.php'; ?>
     <div class="form-container">
         <center>
             <h2>Formulario de Persona</h2>
