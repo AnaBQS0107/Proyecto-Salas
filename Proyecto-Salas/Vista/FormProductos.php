@@ -19,7 +19,7 @@
                 <div class="col-md-8">
                     <div class="card custom-form-width">
                         <div class="card-body">
-                        <form action="../Controlador/FormProductos.php" method="post" enctype="multipart/form-data">
+                            <form action="../Controlador/FormProductos.php" method="post" enctype="multipart/form-data">
                                 <div class="mb-4">
                                     <center>
                                         <h4 class="title-form">Registro de Productos</h4>
@@ -124,14 +124,16 @@
                                     <br><br>
                                     <div class="form-group">
                                         <label for="productImage">Imagen del Producto</label>
-                                      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
+                                        <input type="file" class="form-control" id="productImage" name="productImage"
+                                            accept="image/*" required>
 
                                     </div>
                                     <br><br>
                                 </div>
 
-                                <center> <input type="submit" value="Registrar Producto"
-                                        class="btn btn-block btn-primary"></center>
+                                <div class="form-group">
+                                    <button type="submit" class="submit-btn">Guardar</button>
+                                </div>
 
                             </form>
                         </div>

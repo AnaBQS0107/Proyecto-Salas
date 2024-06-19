@@ -9,9 +9,9 @@
 </head>
 
 <body>
-<?php include 'Navbar.php'; ?>  
-<div class="form-container">
-        
+    <?php include 'Navbar.php'; ?>
+    <div class="form-container">
+
         <center>
             <h2>Formulario Inicial</h2>
         </center>
@@ -117,9 +117,15 @@
                     ?>
                 </select>
             </div>
-            <div class="form-group">
-                <button type="submit" class="submit-btn">Guardar</button>
-            </div>
+            <center>
+                <input type="submit" value="Registrar Producto" class="btn custom-button">
+            </center>
+            <style>
+            .custom-button {
+                background-color: #6c63ff;
+
+            }
+            </style>
         </form>
     </div>
 </body>
