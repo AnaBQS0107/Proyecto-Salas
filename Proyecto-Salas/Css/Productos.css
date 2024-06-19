@@ -2,8 +2,8 @@
 body {
     font-family: Arial, sans-serif;
     font-weight: bold;
-    background: rgb(129,143,155);
-    background: linear-gradient(0deg, rgba(129,143,155,1) 0%, rgba(108,99,255,0.364670868347339) 72%);
+    background: rgb(252,252,252);
+    background: linear-gradient(0deg, rgba(252,252,252,1) 0%, rgba(108,99,255,0.364670868347339) 72%);
 }
 
 .form-group select {
