@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../Css/owl.carousel.min.css">
     <link rel="stylesheet" href="../Css/style.css">
     <title>Login -- Sistema de Ventas</title>
+    <link rel="icon" type="image/png" href="../images/logo22.png">
 </head>
 
 <body>

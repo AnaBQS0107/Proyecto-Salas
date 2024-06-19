@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Persona</title>
     <link rel="stylesheet" href="../Css/Estilos.css">
+    <link rel="icon" type="image/png" href="../images/logo22.png">
 </head>
 
 <body>
