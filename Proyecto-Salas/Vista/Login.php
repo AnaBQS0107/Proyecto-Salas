@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/style.css">
     <title>Login -- Sistema de Ventas</title>
 </head>
@@ -37,7 +36,7 @@
                                     <label for="password">Contraseña</label>
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
-                                <input type="submit" value="Iniciar Sesión" class="btn btn-block btn-primary">
+                                <input type="submit" value="Iniciar Sesión" class="btn btn-block">
                                 <br>
                                 <center><a href="../Vista/FormPersona.php">¿No tienes cuenta? Crea una</a></center>
                             </form>
@@ -49,7 +48,6 @@
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
     <script src="../js/main.js"></script>
 </body>
 
