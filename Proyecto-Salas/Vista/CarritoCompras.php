@@ -68,20 +68,18 @@ try {
                             <p class="card-text"><?php echo $item['descripcion']; ?></p>
                             <p class="card-text">Precio: $<?php echo number_format($item['precio'], 2); ?></p>
                             <div class="form-group">
-                                <label for="cantidad-<?php echo $id; ?>"></label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary menos" type="button"
-                                            data-producto-id="<?php echo $id; ?>">-</button>
+                                    
+                                    <div class="inputCantidad">
+                                        <input type="number" class="form-control text-center cantidad-input"
+                                          id="cantidad-<?php echo $id; ?>" name="cantidad[<?php echo $id; ?>]"
+                                          value="<?php echo $item['cantidad']; ?>" min="0"
+                                        >  
                                     </div>
-                                    <input type="text" class="form-control text-center "
-                                        id="cantidad-<?php echo $id; ?>" name="cantidad[<?php echo $id; ?>]"
-                                        value="<?php echo $item['cantidad']; ?>" min="0">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary mas" type="button"
-                                            data-producto-id="<?php echo $id; ?>">+</button>
-                                    </div>
+                                   
+                                    
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -94,7 +92,7 @@ try {
                 ?>
             </div>
             <?php if (!empty($_SESSION['carrito'])): ?>
-                <div class="row">
+            <div class="row">
                 <div class="col-md-4">
                     <button type="submit" class="btn btn-primary btn-block btn-actualizar">Actualizar Carrito</button>
                 </div>
@@ -112,29 +110,7 @@ try {
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.mas').click(function(e) {
-            e.preventDefault();
-            var productId = $(this).data('producto-id');
-            var cantidadInput = $('#cantidad-' + productId);
-            var cantidad = parseInt(cantidadInput.val());
-            cantidad++;
-            cantidadInput.val(cantidad);
-        });
-
-        $('.menos').click(function(e) {
-            e.preventDefault();
-            var productId = $(this).data('producto-id');
-            var cantidadInput = $('#cantidad-' + productId);
-            var cantidad = parseInt(cantidadInput.val());
-            if (cantidad > 0) {
-                cantidad--;
-                cantidadInput.val(cantidad);
-            }
-        });
-    });
-    </script>
+   
 </body>
 
 </html>
