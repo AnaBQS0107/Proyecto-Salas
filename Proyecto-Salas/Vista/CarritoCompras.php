@@ -100,7 +100,7 @@ try {
                     <a href="Productos.php" class="btn btn-secondary btn-block btn-volver">Volver a Productos</a>
                 </div>
                 <div class="col-md-4">
-                    <a href="Pagos.php" class="btn btn-success btn-block btn-pagar">Pagar</a>
+                    <a href="Pagos.php" class="btn btn-success btn-block btn-pagar">Generar Compra</a>
                 </div>
             </div>
             <?php endif; ?>
