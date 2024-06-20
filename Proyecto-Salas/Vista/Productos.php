@@ -76,14 +76,8 @@
             } catch (PDOException $e) {
                 echo "Error al conectar a la base de datos: " . $e->getMessage();
             }
-
             $conn = null;
             ?>
-             <?php if (!empty($productos)): ?>
-            <div class="col-md-12 text-center mt-3">
-                <a href="Productos.php" class="btn btn-secondary">Volver a Productos</a>
-            </div>
-            <?php endif; ?>
         </div>
     </div>
 
