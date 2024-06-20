@@ -76,6 +76,7 @@
             } catch (PDOException $e) {
                 echo "Error al conectar a la base de datos: " . $e->getMessage();
             }
+
             $conn = null;
             ?>
         </div>
