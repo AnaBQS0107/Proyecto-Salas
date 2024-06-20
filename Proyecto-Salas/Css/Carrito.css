@@ -43,7 +43,7 @@
 }
 
 .form-control:focus {
-    border-color: rgb(124, 85, 197)!important; /* Color del borde dorado */
-    box-shadow: rgb(124, 85, 197)!important; /* Sombra dorada */
-    outline: none; /* Quita el outline por defecto */
+    border-color: rgb(124, 85, 197)!important; 
+    box-shadow: rgb(124, 85, 197)!important; 
+    outline: none; 
 }

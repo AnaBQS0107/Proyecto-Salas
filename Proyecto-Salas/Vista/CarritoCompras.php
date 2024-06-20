@@ -74,7 +74,7 @@ try {
                                         <button class="btn btn-outline-secondary menos" type="button"
                                             data-producto-id="<?php echo $id; ?>">-</button>
                                     </div>
-                                    <input type="text" class="form-control text-center"
+                                    <input type="text" class="form-control text-center "
                                         id="cantidad-<?php echo $id; ?>" name="cantidad[<?php echo $id; ?>]"
                                         value="<?php echo $item['cantidad']; ?>" min="0">
                                     <div class="input-group-append">

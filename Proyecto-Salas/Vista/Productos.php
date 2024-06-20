@@ -13,14 +13,14 @@
     <?php include 'Navbar.php'; ?>
 
     <div class="container mt-5">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-6 mb-4">
                 <form action="lista_productos.php" method="GET" class="form-inline" id="formBusqueda">
                     <div class="form-group">
                         <input type="text" class="form-control" id="busquedaNombre" name="busquedaNombre"
                             placeholder="Ingrese el nombre del producto">
                     </div>
-                    <button type="submit" class="btn btn-primary ml-2">Buscar</button>
+                    <button type="submit" class="btn btn-primary ml-2 btn-buscar">Buscar</button>
                 </form>
             </div>
         </div>
@@ -79,6 +79,11 @@
 
             $conn = null;
             ?>
+             <?php if (!empty($productos)): ?>
+            <div class="col-md-12 text-center mt-3">
+                <a href="Productos.php" class="btn btn-secondary">Volver a Productos</a>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 
