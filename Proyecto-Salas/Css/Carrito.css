@@ -1,0 +1,49 @@
+
+
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+.col-md-4 .btn {
+    width: 100%;
+}
+
+.btn-actualizar {
+    background-color: #3c7fc2!important;
+    color: white;
+    border:#75afe9!important;
+    font-weight: bold!important;
+    
+}
+
+.btn-volver {
+    background-color: #7665c2!important;
+    color: white;
+    border:  #725eca!important;
+    font-weight: bold!important;
+}
+
+.btn-pagar {
+    background-color: #47ad5f!important;
+    color: white;
+    border:#6feb8c!important;
+    font-weight: bold!important;
+}
+
+.titulo-carrito {
+    text-align: center;
+    margin: 20px 0 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333; 
+ 
+}
+
+.form-control:focus {
+    border-color: rgb(124, 85, 197)!important; /* Color del borde dorado */
+    box-shadow: rgb(124, 85, 197)!important; /* Sombra dorada */
+    outline: none; /* Quita el outline por defecto */
+}

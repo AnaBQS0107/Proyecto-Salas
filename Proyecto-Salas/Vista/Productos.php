@@ -17,7 +17,6 @@
             <div class="col-md-6 mb-4">
                 <form action="lista_productos.php" method="GET" class="form-inline" id="formBusqueda">
                     <div class="form-group">
-                    
                         <input type="text" class="form-control" id="busquedaNombre" name="busquedaNombre"
                             placeholder="Ingrese el nombre del producto">
                     </div>
@@ -35,37 +34,29 @@
             $password = "";
 
             try {
-              
                 $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-           
                 $filtroNombre = isset($_GET['busquedaNombre']) ? $_GET['busquedaNombre'] : '';
 
-                $sql = "SELECT Nombre, Descripcion, Precio, Imagen FROM producto";
+                $sql = "SELECT ProductoID, Nombre, Descripcion, Precio, Imagen FROM producto";
 
-               
                 if (!empty($filtroNombre)) {
                     $sql .= " WHERE Nombre LIKE :nombre";
                 }
 
                 $stmt = $conn->prepare($sql);
 
-             
                 if (!empty($filtroNombre)) {
                     $nombreParam = '%' . $filtroNombre . '%';
                     $stmt->bindParam(':nombre', $nombreParam, PDO::PARAM_STR);
                 }
 
-              
                 $stmt->execute();
-
-          
                 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-             
                 foreach ($productos as $producto) {
-                    ?>
+            ?>
             <div class="col-md-4 mb-4 producto">
                 <div class="card">
                     <img src="../uploads/<?php echo $producto['Imagen']; ?>" class="card-img-top" alt="...">
@@ -73,7 +64,10 @@
                         <h5 class="card-title"><?php echo $producto['Nombre']; ?></h5>
                         <p class="card-text"><?php echo $producto['Descripcion']; ?></p>
                         <p class="card-text">Precio: $<?php echo number_format($producto['Precio'], 2); ?></p>
-                        <a href="#" class="btn btn-primary">Agregar a carrito</a>
+                        <form action="agregar_al_carrito.php" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $producto['ProductoID']; ?>">
+                            <button type="submit" class="btn btn-primary">Agregar a carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -82,7 +76,7 @@
             } catch (PDOException $e) {
                 echo "Error al conectar a la base de datos: " . $e->getMessage();
             }
-      
+
             $conn = null;
             ?>
         </div>
@@ -91,7 +85,7 @@
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/Card.js"></script> 
+    <script src="../js/Card.js"></script>
 
 </body>
 

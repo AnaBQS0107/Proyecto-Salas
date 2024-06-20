@@ -15,7 +15,7 @@ body {
     box-sizing: border-box;
     }
     .form-group select {
-    height: 38px; /* Ajuste para que el tamaño sea uniforme con los inputs */
+    height: 38px; 
     }
 
 

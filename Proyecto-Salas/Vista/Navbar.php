@@ -48,6 +48,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="../Vista/Productos.php">Productos</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../Vista/CarritoCompras.php">Carrito</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
