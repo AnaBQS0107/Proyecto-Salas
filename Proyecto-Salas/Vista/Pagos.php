@@ -71,53 +71,81 @@ if (!empty($_SESSION['carrito'])) {
 </head>
 
 <body>
-    <?php include 'Navbar.php'; ?>
+    <div class="page-container">
+        <?php include 'Navbar.php'; ?>
 
-    <div class="container mt-5">
-        <h2 class="titulo-carrito">Resumen de Compra</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <?php if (isset($mensajePago)): ?>
-                            <p><?php echo $mensajePago; ?></p>
-                            <a href="Productos.php" class="btn btn-primary">Volver a la lista de productos</a>
-                        <?php else: ?>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Cantidad</th>
-                                        <th>Precio Unitario</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($productosCarrito as $producto): ?>
-                                    <tr>
-                                        <td><?php echo $producto['nombre']; ?></td>
-                                        <td><?php echo $producto['cantidad']; ?></td>
-                                        <td>$<?php echo number_format($producto['precio'], 2); ?></td>
-                                        <td>$<?php echo number_format($producto['subtotal'], 2); ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            <form action="" method="post">
-                                <button type="submit" class="btn btn-success btn-block btn-pagar">Pagar</button>
-                            </form>
-                        <?php endif; ?>
+        <div class="container mt-5">
+            <h2 class="titulo-carrito">Resumen de Compra</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <?php if (isset($mensajePago)): ?>
+                                <p><?php echo $mensajePago; ?></p>
+                                <a href="Productos.php" class="btn btn-primary">Volver a la lista de productos</a>
+                            <?php else: ?>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($productosCarrito as $producto): ?>
+                                        <tr>
+                                            <td><?php echo $producto['nombre']; ?></td>
+                                            <td><?php echo $producto['cantidad']; ?></td>
+                                            <td>$<?php echo number_format($producto['precio'], 2); ?></td>
+                                            <td>$<?php echo number_format($producto['subtotal'], 2); ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <form action="" method="post">
+                                    <button type="submit" class="btn btn-success btn-block btn-pagar">Pagar</button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <?php include 'footer.php'; ?>
     </div>
 
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <?php include 'footer.php'; ?>
-
 </body>
 
 </html>
+
+<style>
+html, body {
+    height: 100%;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.container {
+    flex: 1;
+}
+
+.footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+}
+</style>
