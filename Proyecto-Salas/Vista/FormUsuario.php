@@ -32,7 +32,7 @@ $password = "";
             </div>
             <div class="form-group">
                 <label for="Email">Correo electrónico:</label>
-                <input type="email" id="Email" name="Email" required>
+                <input type="text" id="Email" name="Email" required>
             </div>
             <div class="form-group">
                 <label for="Telefono">Teléfono:</label>

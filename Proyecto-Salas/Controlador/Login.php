@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validating user credentials
         if ($user) {
             if ($Contrasena === $user['Contrasena']) {
-                echo "Inicio de sesión exitoso";  // Successful login message
+                header('Location: ../Vista/Inicio.php');   // Successful login message
             } else {
                 echo "Contraseña incorrecta";  // Incorrect password message
             }
