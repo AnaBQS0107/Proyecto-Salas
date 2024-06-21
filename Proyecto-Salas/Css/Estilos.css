@@ -25,6 +25,8 @@ margin-bottom: 5px;
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="number"],
 .form-group select {
 width: 100%;
 padding: 8px;
@@ -71,4 +73,22 @@ margin: 0 auto; /* Centrar horizontalmente */
 }
 .form-group .submit-btn:hover {
 background-color: #847dff;
+}
+
+.number{
+    width: 100%;
+padding: 8px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+.email{
+    width: 100%;
+padding: 8px;
+font-size: 16px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
 }
