@@ -1,0 +1,23 @@
+
+body {
+    background: linear-gradient(to bottom, rgb(175, 169, 255) 0%, rgb(213, 212, 235) 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-pagar {
+    background-color: #47ad5f!important;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-pagar:hover {
+    background-color:  #47ad5f!important;
+    border-color:  #47ad5f !important;
+}
+

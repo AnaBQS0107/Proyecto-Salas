@@ -30,6 +30,11 @@ try {
 }
 
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $_SESSION['carrito'] = [];
+    $mensajePago = "El pago se ha procesado exitosamente.";
+}
+
 $productosCarrito = [];
 if (!empty($_SESSION['carrito'])) {
     foreach ($_SESSION['carrito'] as $id => $producto) {
@@ -42,12 +47,13 @@ if (!empty($_SESSION['carrito'])) {
         ];
     }
 } else {
-    
-    echo "<div class='container mt-5'>";
-    echo "<p>El carrito está vacío.</p>";
-    echo "<a href='Productos.php' class='btn btn-primary'>Volver a la lista de productos</a>";
-    echo "</div>";
-    exit;
+    if (!isset($mensajePago)) {
+        echo "<div class='container mt-5'>";
+        echo "<p>El carrito está vacío.</p>";
+        echo "<a href='Productos.php' class='btn btn-primary'>Volver a la lista de productos</a>";
+        echo "</div>";
+        exit;
+    }
 }
 ?>
 
@@ -61,6 +67,7 @@ if (!empty($_SESSION['carrito'])) {
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/CardProductos.css">
     <link rel="stylesheet" href="../Css/Carrito.css">
+    <link rel="stylesheet" href="../Css/Pagos.css">
 </head>
 
 <body>
@@ -72,30 +79,34 @@ if (!empty($_SESSION['carrito'])) {
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                    
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio Unitario</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($productosCarrito as $producto): ?>
-                                <tr>
-                                    <td><?php echo $producto['nombre']; ?></td>
-                                    <td><?php echo $producto['cantidad']; ?></td>
-                                    <td>$<?php echo number_format($producto['precio'], 2); ?></td>
-                                    <td>$<?php echo number_format($producto['subtotal'], 2); ?></td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                        <form action="" method="post">
-                            <button type="submit" class="btn btn-success btn-block btn-pagar">Pagar</button>
-                        </form>
+                        <?php if (isset($mensajePago)): ?>
+                            <p><?php echo $mensajePago; ?></p>
+                            <a href="Productos.php" class="btn btn-primary">Volver a la lista de productos</a>
+                        <?php else: ?>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Unitario</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($productosCarrito as $producto): ?>
+                                    <tr>
+                                        <td><?php echo $producto['nombre']; ?></td>
+                                        <td><?php echo $producto['cantidad']; ?></td>
+                                        <td>$<?php echo number_format($producto['precio'], 2); ?></td>
+                                        <td>$<?php echo number_format($producto['subtotal'], 2); ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            <form action="" method="post">
+                                <button type="submit" class="btn btn-success btn-block btn-pagar">Pagar</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
