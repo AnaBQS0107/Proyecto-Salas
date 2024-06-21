@@ -27,7 +27,6 @@
 
         <div class="row" id="listaProductos">
             <?php
-        
             $host = "localhost:3307";
             $db_name = "sales_system";
             $username = "root";
@@ -39,7 +38,7 @@
 
                 $filtroNombre = isset($_GET['busquedaNombre']) ? $_GET['busquedaNombre'] : '';
 
-                $sql = "SELECT ProductoID, Nombre, Descripcion, Precio, Imagen FROM producto";
+                $sql = "SELECT ProductoID, Nombre, Descripcion, Precio, Precio_Con_IVA, Imagen FROM producto";
 
                 if (!empty($filtroNombre)) {
                     $sql .= " WHERE Nombre LIKE :nombre";
@@ -59,11 +58,12 @@
             ?>
             <div class="col-md-4 mb-4 producto">
                 <div class="card">
-                    <img src="../uploads/<?php echo $producto['Imagen']; ?>" class="card-img-top" alt="...">
+                    <img src="../uploads/<?php echo htmlspecialchars($producto['Imagen']); ?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $producto['Nombre']; ?></h5>
-                        <p class="card-text"><?php echo $producto['Descripcion']; ?></p>
+                        <h5 class="card-title"><?php echo htmlspecialchars($producto['Nombre']); ?></h5>
+                        <p class="card-text"><?php echo htmlspecialchars($producto['Descripcion']); ?></p>
                         <p class="card-text">Precio: $<?php echo number_format($producto['Precio'], 2); ?></p>
+                        <p class="card-text">Precio con IVA: $<?php echo number_format($producto['Precio_Con_IVA'], 2); ?></p>
                         <form action="agregar_al_carrito.php" method="POST">
                             <input type="hidden" name="id" value="<?php echo $producto['ProductoID']; ?>">
                             <button type="submit" class="btn btn-primary">Agregar a carrito</button>
