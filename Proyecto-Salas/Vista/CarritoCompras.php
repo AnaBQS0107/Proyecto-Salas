@@ -52,7 +52,7 @@ try {
 <body>
     <?php include 'Navbar.php'; ?>
 
-    <div class="container mt-5">
+    <div class="container mt-5 background-custom">
         <h2 class="titulo-carrito">Carrito de Compras</h2>
         <form action="" method="post">
             <div class="row">
