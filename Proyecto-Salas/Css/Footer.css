@@ -1,0 +1,25 @@
+/* Estilos para el footer */
+
+/* Centra todo el contenido dentro del footer */
+footer {
+    text-align: center!important;
+}
+
+/* Asegura que los elementos dentro de las columnas se alineen correctamente */
+footer .col-md-3 {
+    display: inline-block!important;
+    vertical-align: top!important;
+    text-align: left!important; /* Alineación del texto dentro de las columnas */
+    margin-bottom: 15px!important; /* Espacio entre las columnas */
+}
+
+/* Ajustes para la lista de contacto */
+footer .list-unstyled {
+    padding-left: 0!important; /* Elimina el relleno izquierdo de la lista sin marcar */
+    list-style: none; /* Elimina los estilos de viñetas de la lista */
+}
+
+/* Asegura que el texto de derechos reservados esté centrado */
+footer p {
+    margin-bottom: 0!important; /* Elimina el espacio inferior del párrafo */
+}

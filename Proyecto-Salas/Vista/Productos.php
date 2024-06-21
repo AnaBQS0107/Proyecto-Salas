@@ -86,6 +86,7 @@
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/Card.js"></script>
+    <?php include 'footer.php'; ?>
 
 </body>
 
