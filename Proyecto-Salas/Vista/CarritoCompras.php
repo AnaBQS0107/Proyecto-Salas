@@ -67,6 +67,7 @@ try {
                             <h5 class="card-title"><?php echo $item['nombre']; ?></h5>
                             <p class="card-text"><?php echo $item['descripcion']; ?></p>
                             <p class="card-text">Precio: $<?php echo number_format($item['precio'], 2); ?></p>
+                            <p class="card-text">Precio con IVA: $<?php echo number_format($item['Precio_con_IVA'], 2); ?></p>
                             <div class="form-group">
                                 <div class="input-group">
                                     

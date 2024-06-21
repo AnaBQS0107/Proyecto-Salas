@@ -13,15 +13,15 @@ class ProductoModelo {
             echo "Error de conexión: " . $exception->getMessage();
         }
     }
-    public function guardarProducto($nombre, $descripcion, $precio, $precio_con_IVA, $cantidad, $fecha, $categoriaID, $tipoProductoID) {
+    public function guardarProducto($nombre, $descripcion, $precio, $precio_Con_IVA, $cantidad, $fecha, $categoriaID, $tipoProductoID) {
         try {
-            $sql = "INSERT INTO producto (Nombre, Descripcion, Precio, precio_con_IVA, CantidadEnStock, FechaIngreso, CategoriaID, TipoProductoID)
-                    VALUES (:nombre, :descripcion, :precio, :precio_con_IVA, :cantidad, :fecha, :categoriaID, :tipoProductoID)";
+            $sql = "INSERT INTO producto (Nombre, Descripcion, Precio, precio_Con_IVA, CantidadEnStock, FechaIngreso, CategoriaID, TipoProductoID)
+                    VALUES (:nombre, :descripcion, :precio, :precio_Con_IVA, :cantidad, :fecha, :categoriaID, :tipoProductoID)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $stmt->bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
             $stmt->bindParam(':precio', $precio, PDO::PARAM_INT); 
-            $stmt->bindParam(':precio_con_IVA', $precio_con_IVA, PDO::PARAM_INT); 
+            $stmt->bindParam(':precio_Con_IVA', $precio_Con_IVA, PDO::PARAM_INT); 
             $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
             $stmt->bindParam(':fecha', $fecha, PDO::PARAM_STR); 
             $stmt->bindParam(':categoriaID', $categoriaID, PDO::PARAM_INT); 

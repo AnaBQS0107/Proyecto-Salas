@@ -43,6 +43,9 @@
                                 <a class="nav-link" href="../Vista/FormUsuario.php">Ingresar Usuarios</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="../Vista/FormClientes.php">Ingresar Clientes</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="../Vista/FormProductos.php">Ingresar Productos</a>
                             </li>
                             <li class="nav-item">

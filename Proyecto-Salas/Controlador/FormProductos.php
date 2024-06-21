@@ -13,7 +13,7 @@ try {
         $nombre = $_POST['Nombre'];
         $descripcion = $_POST['Descripcion'];
         $precio = $_POST['Precio'];
-        $precio_con_iva = $_POST['Precio_con_IVA'];
+        $precio_con_IVA = $_POST['Precio_Con_IVA'];
         $cantidad_en_stock = $_POST['CantidadEnStock'];
         $fecha_ingreso = $_POST['FechaIngreso'];
         $categoria_id = $_POST['CategoriaID'];
@@ -32,13 +32,13 @@ try {
                 // Mover archivo al directorio de uploads
                 if (move_uploaded_file($_FILES['productImage']['tmp_name'], $target_file)) {
                     // Insertar datos en la tabla producto
-                    $sql = "INSERT INTO producto (Nombre, Descripcion, Precio, Precio_con_IVA, CantidadEnStock, FechaIngreso, CategoriaID, TipoProductoID, Imagen)
-                            VALUES (:nombre, :descripcion, :precio, :precio_con_iva, :cantidad_en_stock, :fecha_ingreso, :categoria_id, :tipo_producto_id, :imagen)";
+                    $sql = "INSERT INTO producto (Nombre, Descripcion, Precio, Precio_Con_IVA, CantidadEnStock, FechaIngreso, CategoriaID, TipoProductoID, Imagen)
+                            VALUES (:nombre, :descripcion, :precio, :precio_Con_IVA, :cantidad_en_stock, :fecha_ingreso, :categoria_id, :tipo_producto_id, :imagen)";
                     $stmt = $conn->prepare($sql);
                     $stmt->bindParam(':nombre', $nombre);
                     $stmt->bindParam(':descripcion', $descripcion);
                     $stmt->bindParam(':precio', $precio);
-                    $stmt->bindParam(':precio_con_iva', $precio_con_iva); // Corregido el nombre del parámetro
+                    $stmt->bindParam(':precio_Con_IVA', $precio_Con_IVA); // Corregido el nombre del parámetro
                     $stmt->bindParam(':cantidad_en_stock', $cantidad_en_stock);
                     $stmt->bindParam(':fecha_ingreso', $fecha_ingreso);
                     $stmt->bindParam(':categoria_id', $categoria_id);
