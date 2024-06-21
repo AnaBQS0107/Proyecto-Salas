@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PH.SA</title>
-    <link rel="icon" type="image/png" href="../images/logo22.png">
+    <link rel="icon" type="image/png" href="../images/lll.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
     .navbar {
@@ -21,7 +21,9 @@
 <body>
     <header>
         <nav class="navbar navbar-dark bg-dark">
+       
             <div class="container-fluid">
+            <img src="../images/lll.png" alt="lllPH" width="60" height="55">
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,7 +31,7 @@
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <img src="../images/logo22.png" alt="LogoPH" width="60" height="55">
+                        <img src="../images/lll.png" alt="lllPH" width="60" height="55">
                         <center>     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">PH.SA</h5></center>
                    
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
