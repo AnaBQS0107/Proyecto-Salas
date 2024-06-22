@@ -68,6 +68,7 @@ if (!empty($_SESSION['carrito'])) {
     <link rel="stylesheet" href="../Css/CardProductos.css">
     <link rel="stylesheet" href="../Css/Carrito.css">
     <link rel="stylesheet" href="../Css/Pagos.css">
+    <link rel="icon" type="image/png" href="../images/llll.png">
 </head>
 
 <body>

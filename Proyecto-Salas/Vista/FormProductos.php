@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/Productos.css">
-    <link rel="icon" type="image/png" href="../images/logo22.png">
+    <link rel="icon" type="image/png" href="../images/llll.png">
 
     <title>Registro de Productos -- Sistema de Ventas</title>
 </head>
