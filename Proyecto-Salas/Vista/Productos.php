@@ -7,7 +7,7 @@
     <title>Lista de Productos</title>
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/CardProductos.css">
-    <link rel="icon" type="image/png" href="../images/llll.png">
+    <link rel="icon" type="image/png" href="../images/lll.png">
 </head>
 
 <body>

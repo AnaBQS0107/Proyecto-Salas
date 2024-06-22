@@ -13,7 +13,7 @@ $password = "";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Usuario</title>
     <link rel="stylesheet" href="../Css/Estilos.css">
-    <link rel="icon" type="image/png" href="../images/llll.png">
+    <link rel="icon" type="image/png" href="../images/lll.png">
 </head>
 <body>
     <?php include 'Navbar.php'; ?>
