@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso Clientes -- PH.SA</title>
     <link rel="stylesheet" href="../Css/Estilos.css">
     <link rel="icon" type="image/png" href="../images/lll.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
     <?php include 'Navbar.php'; ?>
     <div class="form-container">
@@ -111,8 +110,28 @@
             xhr.send("cedula=" + encodeURIComponent(cedula));
         }
     }
-    </script>
-      <?php include 'footer.php'; ?>
-</body>
 
+   
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const successMessage = urlParams.get('success');
+        const errorMessage = urlParams.get('error');
+
+        if (successMessage) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: successMessage
+            });
+        } else if (errorMessage) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: decodeURIComponent(errorMessage)
+            });
+        }
+    });
+    </script>
+    <?php include 'footer.php'; ?>
+</body>
 </html>

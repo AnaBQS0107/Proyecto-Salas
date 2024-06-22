@@ -1,6 +1,4 @@
 <?php
-// Include database connection
-
 $host = "localhost:3307";
 $db_name = "sales_system";
 $username = "root";
@@ -8,9 +6,7 @@ $password = "";
 
 $conn = new mysqli($host, $username, $password, $db_name);
 
-// Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve and sanitize form data
     $Cedula = $_POST['personaID'] ?? null;
     $Nombre = $_POST['nombre'] ?? null;
     $Apellido = $_POST['apellido'] ?? null;
@@ -20,26 +16,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Residencia = $_POST['residencia'] ?? null;
     $Genero = $_POST['genero'] ?? null;
 
-    // Check if all fields are set
     if ($Cedula && $Nombre && $Apellido && $Correo && $Teléfono && $Edad && $Residencia && $Genero) {
         if ($conn->connect_error) {
             die("Conexión fallida: " . $conn->connect_error);
         }
 
-        // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO cliente (Cedula, Nombre, Apellido, Correo, Teléfono, Edad, Residencia, Genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssss", $Cedula, $Nombre, $Apellido, $Correo, $Teléfono, $Edad, $Residencia, $Genero);
+        try {
+            $stmt = $conn->prepare("INSERT INTO cliente (Cedula, Nombre, Apellido, Correo, Teléfono, Edad, Residencia, Genero) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssss", $Cedula, $Nombre, $Apellido, $Correo, $Teléfono, $Edad, $Residencia, $Genero);
 
-        if ($stmt->execute()) {
-            echo "Registro guardado exitosamente";
-        } else {
-            echo "Error: " . $stmt->error;
+            if ($stmt->execute()) {
+                header("Location: ../Vista/FormClientes.php?success=" . urlencode("Registro guardado exitosamente"));
+                exit();
+            } else {
+                throw new Exception("Error al ejecutar la consulta: " . $stmt->error);
+            }
+
+            $stmt->close();
+            $conn->close();
+        } catch (mysqli_sql_exception $e) {
+            header("Location: ../Vista/FormClientes.php?error=" . urlencode("Error en la base de datos: " . $e->getMessage()));
+            exit();
+        } catch (Exception $e) {
+            header("Location: ../Vista/FormClientes.php?error=" . urlencode("Error: " . $e->getMessage()));
+            exit();
         }
-
-        $stmt->close();
-        $conn->close();
     } else {
-        echo "Por favor complete todos los campos.";
+        header("Location: ../Vista/FormClientes.php?error=" . urlencode("Por favor complete todos los campos."));
+        exit();
     }
 }
 ?>

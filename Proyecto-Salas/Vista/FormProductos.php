@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../Css/bootstrap.min.css">
     <link rel="stylesheet" href="../Css/Productos.css">
     <link rel="icon" type="image/png" href="../images/lll.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>Registro de Productos -- Sistema de Ventas</title>
 </head>
@@ -133,27 +134,58 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="submit-btn">Guardar</button>
-                                </div>
-
+                                    <button type="submit">Registrar Producto</button>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-    function calcularIVA() {
-        var precioSinIVA = document.getElementById('precio').value;
-        var precioConIVA = precioSinIVA * 1.13;
-        document.getElementById('precioConIVA').value = precioConIVA.toFixed(2);
-    }
-    </script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/main.js"></script>
-    <?php include 'footer.php'; ?>
+
+                            <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const successMessage = '<?php echo $successMessage ?? ""; ?>';
+                                const errorMessage = '<?php echo $errorMessage ?? ""; ?>';
+
+                                if (successMessage) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Éxito',
+                                        text: successMessage
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href =
+                                            '../Vista/Productos.php'; // Redirigir a otra página si es necesario
+                                        }
+                                    });
+                                } else if (errorMessage) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: errorMessage
+                                    });
+                                }
+                            });
+                            </script>
+</body>
+
+</html>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+function calcularIVA() {
+    var precioSinIVA = document.getElementById('precio').value;
+    var precioConIVA = precioSinIVA * 1.13;
+    document.getElementById('precioConIVA').value = precioConIVA.toFixed(2);
+}
+</script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php include 'footer.php'; ?>
 </body>
 
 </html>
