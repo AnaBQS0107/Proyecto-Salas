@@ -13,16 +13,6 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_SESSION['carrito'])) {
-        foreach ($_POST['cantidad'] as $id => $cantidad) {
-            $_SESSION['carrito'][$id]['cantidad'] = $cantidad;
-        }
-
-        limpiarCarrito();
-    }
-}
-
 $host = "localhost:3307";
 $db_name = "sales_system";
 $username = "root";
@@ -31,9 +21,26 @@ $password = "";
 try {
     $conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    $stmt = $conn->prepare("SELECT ProductoID, nombre, descripcion, precio, imagen, CantidadEnStock FROM producto WHERE ProductoID = :ProductoID");
 } catch (PDOException $e) {
     echo "Error al conectar a la base de datos: " . $e->getMessage();
     die();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_SESSION['carrito'])) {
+        foreach ($_POST['cantidad'] as $id => $cantidad) {
+            $stmt->execute(array('ProductoID' => $id));
+            $producto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $cantidad = min($cantidad, $producto['CantidadEnStock']);
+            
+            $_SESSION['carrito'][$id]['cantidad'] = $cantidad;
+        }
+
+        limpiarCarrito();
+    }
 }
 ?>
 
@@ -55,11 +62,13 @@ try {
 
     <div class="container mt-5 background-custom">
         <h2 class="titulo-carrito">Carrito de Compras</h2>
-        <form action="" method="post">
+        <form id="carritoForm" action="" method="post">
             <div class="row">
                 <?php
                 if (!empty($_SESSION['carrito'])) {
                     foreach ($_SESSION['carrito'] as $id => $item) {
+                        $stmt->execute(array('ProductoID' => $id));
+                        $producto = $stmt->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <div class="col-md-4 mb-4 producto">
                     <div class="card">
@@ -70,17 +79,14 @@ try {
                             <p class="card-text">Precio: $<?php echo number_format($item['precio'], 2); ?></p>
                             <div class="form-group">
                                 <div class="input-group">
-                                    
                                     <div class="inputCantidad">
                                         <input type="number" class="form-control text-center cantidad-input"
                                           id="cantidad-<?php echo $id; ?>" name="cantidad[<?php echo $id; ?>]"
-                                          value="<?php echo $item['cantidad']; ?>" min="0"
+                                          value="<?php echo $item['cantidad']; ?>" min="0" max="<?php echo $producto['CantidadEnStock']; ?>"
+                                          onchange="actualizarCarrito()"
                                         >  
                                     </div>
-                                   
-                                    
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -93,10 +99,7 @@ try {
                 ?>
             </div>
             <?php if (!empty($_SESSION['carrito'])): ?>
-            <div class="row">
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-actualizar">Actualizar Carrito</button>
-                </div>
+            <div class="row justify-content-center">
                 <div class="col-md-4">
                     <a href="Productos.php" class="btn btn-secondary btn-block btn-volver">Volver a Productos</a>
                 </div>
@@ -111,6 +114,11 @@ try {
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script>
+        function actualizarCarrito() {
+            document.getElementById('carritoForm').submit();
+        }
+    </script>
     <?php include 'footer.php'; ?>
 </body>
 
