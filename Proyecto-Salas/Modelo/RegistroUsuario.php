@@ -1,44 +1,42 @@
 <?php
-// Include database connection
-
 $host = "localhost:3307";
 $db_name = "sales_system";
 $username = "root";
 $password = "";
 
-
-
-// Check if form was submitted
+// Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve and sanitize form data
-    $UsuarioID = $_POST['UsuarioID'] ?? null;
+    // Recuperar y sanitizar los datos del formulario
     $nombreUsuario = $_POST['NombreUsuario'] ?? null;
     $Email = $_POST['Email'] ?? null;
     $Telefono = $_POST['Telefono'] ?? null;
     $TipoUsuarioID = $_POST['TipoUsuarioID'] ?? null;
     $PersonaID = $_POST['PersonaID'] ?? null;
 
-    // Check if all fields are set
-    if ($UsuarioID && $nombreUsuario && $Email && $Telefono && $TipoUsuarioID && $PersonaID) {
-        // Create database connection
+    // Verificar si todos los campos están completos
+    if ($nombreUsuario && $Email && $Telefono && $TipoUsuarioID && $PersonaID) {
+        // Crear conexión a la base de datos
         $conn = new mysqli($host, $username, $password, $db_name);
         if ($conn->connect_error) {
             die("Conexión fallida: " . $conn->connect_error);
         }
 
-        // Insert data into database
-        $sql = "INSERT INTO usuario (UsuarioID, NombreUsuario, Email, Telefono, TipoUsuarioID, PersonaID)
-                VALUES ('$UsuarioID', '$nombreUsuario', '$Email', '$Telefono', '$TipoUsuarioID', '$PersonaID')";
+        // Insertar datos en la base de datos
+        $sql = "INSERT INTO usuario (NombreUsuario, Email, Telefono, TipoUsuarioID, PersonaID)
+                VALUES ('$nombreUsuario', '$Email', '$Telefono', '$TipoUsuarioID', '$PersonaID')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Registro guardado exitosamente";
+            header("Location: ../Vista/FormUsuario.php?status=success");
+            exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            header("Location: ../Vista/FormUsuario.php?status=error");
+            exit();
         }
 
         $conn->close();
     } else {
-        echo "Por favor complete todos los campos.";
+        header("Location: ../Vista/FormUsuario.php?status=error");
+        exit();
     }
 }
 ?>

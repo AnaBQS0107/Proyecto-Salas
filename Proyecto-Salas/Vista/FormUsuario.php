@@ -5,7 +5,6 @@ $username = "root";
 $password = "";
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,6 +13,7 @@ $password = "";
     <title>Formulario de Usuario</title>
     <link rel="stylesheet" href="../Css/Estilos.css">
     <link rel="icon" type="image/png" href="../images/lll.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     <?php include 'Navbar.php'; ?>
@@ -22,10 +22,6 @@ $password = "";
             <h2>Formulario de Usuario</h2>
         </center>
         <form action="../Modelo/RegistroUsuario.php" method="POST">
-            <div class="form-group">
-                <label for="UsuarioID">Usuario ID:</label>
-                <input type="text" id="UsuarioID" name="UsuarioID" required>
-            </div>
             <div class="form-group">
                 <label for="NombreUsuario">Nombre de usuario:</label>
                 <input type="text" id="NombreUsuario" name="NombreUsuario" required>
@@ -71,6 +67,23 @@ $password = "";
         </form>
     </div>
     <?php include 'footer.php'; ?>
-</body>
 
+    <script>
+        <?php if (isset($_GET['status'])): ?>
+            <?php if ($_GET['status'] == 'success'): ?>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registro exitoso',
+                    text: 'El usuario ha sido registrado correctamente.'
+                });
+            <?php elseif ($_GET['status'] == 'error'): ?>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al registrar el usuario. Intente de nuevo.'
+                });
+            <?php endif; ?>
+        <?php endif; ?>
+    </script>
+</body>
 </html>
