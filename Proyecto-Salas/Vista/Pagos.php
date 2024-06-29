@@ -1,21 +1,6 @@
 <?php
 session_start();
 
-
-function limpiarCarrito() {
-    foreach ($_SESSION['carrito'] as $key => $item) {
-        if ($item['cantidad'] <= 0) {
-            unset($_SESSION['carrito'][$key]);
-        }
-    }
-}
-
-
-if (!isset($_SESSION['carrito'])) {
-    $_SESSION['carrito'] = [];
-}
-
-
 $host = "localhost:3307";
 $db_name = "sales_system";
 $username = "root";
@@ -29,10 +14,33 @@ try {
     die();
 }
 
+$pagoExitoso = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['carrito'] = [];
-    $mensajePago = "El pago se ha procesado exitosamente.";
+    try {
+        $conn->beginTransaction();
+
+        foreach ($_SESSION['carrito'] as $id => $producto) {
+         
+            $stmt = $conn->prepare("UPDATE producto SET CantidadEnStock = CantidadEnStock - :cantidad WHERE ProductoID = :id");
+            $stmt->execute([
+                ':cantidad' => $producto['cantidad'],
+                ':id' => $id
+            ]);
+        }
+
+    
+
+        $conn->commit();
+
+     
+        $_SESSION['carrito'] = [];
+
+        $pagoExitoso = true;
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo "Error al procesar el pago: " . $e->getMessage();
+    }
 }
 
 $productosCarrito = [];
@@ -45,14 +53,6 @@ if (!empty($_SESSION['carrito'])) {
             'precio' => $producto['precio'],
             'subtotal' => $producto['cantidad'] * $producto['precio']
         ];
-    }
-} else {
-    if (!isset($mensajePago)) {
-        echo "<div class='container mt-5'>";
-        echo "<p>El carrito está vacío.</p>";
-        echo "<a href='Productos.php' class='btn btn-primary'>Volver a la lista de productos</a>";
-        echo "</div>";
-        exit;
     }
 }
 ?>
@@ -69,6 +69,7 @@ if (!empty($_SESSION['carrito'])) {
     <link rel="stylesheet" href="../Css/Carrito.css">
     <link rel="stylesheet" href="../Css/Pagos.css">
     <link rel="icon" type="image/png" href="../images/lll.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -76,15 +77,13 @@ if (!empty($_SESSION['carrito'])) {
         <?php include 'Navbar.php'; ?>
 
         <div class="container mt-5">
-            <h2 class="titulo-carrito">Resumen de Compra</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <?php if (isset($mensajePago)): ?>
-                                <p><?php echo $mensajePago; ?></p>
-                                <a href="Productos.php" class="btn btn-primary">Volver a la lista de productos</a>
-                            <?php else: ?>
+            <?php if (empty($productosCarrito)): ?>
+            <?php else: ?>
+                <h2 class="titulo-carrito">Resumen de Compra</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -108,11 +107,11 @@ if (!empty($_SESSION['carrito'])) {
                                 <form action="" method="post">
                                     <button type="submit" class="btn btn-success btn-block btn-pagar">Pagar</button>
                                 </form>
-                            <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
 
         <?php include 'footer.php'; ?>
@@ -121,6 +120,21 @@ if (!empty($_SESSION['carrito'])) {
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    
+    <script>
+        <?php if ($pagoExitoso): ?>
+        Swal.fire({
+            title: 'Pago procesado exitosamente',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'Volver a Productos'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'Productos.php';
+            }
+        });
+        <?php endif; ?>
+    </script>
 </body>
 
 </html>
